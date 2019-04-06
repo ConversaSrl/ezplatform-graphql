@@ -5,7 +5,7 @@ use eZ\Publish\API\Repository\Values\Content\Query;
 use GraphQL\Error\UserError;
 use InvalidArgumentException;
 
-class SearchQueryMapper
+class SearchQueryMapper implements QueryMapper
 {
     /**
      * @param array $inputArray

@@ -1,4 +1,9 @@
 services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
     EzSystems\EzPlatformGraphQL\DependencyInjection\Factory\SearchFeaturesFactory:
         arguments:
             $configurationProvider: '@ezpublish.api.repository_configuration_provider'
@@ -13,4 +18,7 @@ services:
         arguments:
             $converterRegistry: '@ezpublish.persistence.legacy.field_value_converter.registry'
 
-    EzSystems\EzPlatformGraphQL\Search\SolrSearchFeatures: ~
+    EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\FieldsQueryMapper:
+        decorates: EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\SearchQueryMapper
+        arguments:
+            $innerMapper: EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\FieldsQueryMapper./inner
